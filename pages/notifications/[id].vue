@@ -24,7 +24,6 @@ const saveNotification = async (notification: AppNotification) => {
 onMounted(async () => {
   const notificationId =  route.params.id;
   notification.value = await notificationStore.getAppNotificationById(notificationId);
-  console.log(notification.value);
 })
 
 </script>

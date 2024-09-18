@@ -19,6 +19,9 @@
             <NuxtLink to="/chiptionary" @click.native="closeSidebar">
                 <CommonButtonIcon title="Chiptionary" icon="fluent-mdl2:dictionary" />
             </NuxtLink>
+            <NuxtLink to="/helps" @click.native="closeSidebar">
+              <CommonButtonIcon title="Help" icon="grommet-icons:help-book" />
+            </NuxtLink>
             <NuxtLink to="/articles" @click.native="closeSidebar">
                 <CommonButtonIcon title="Article" icon="material-symbols:article-outline" icon-size=25 />
             </NuxtLink>
