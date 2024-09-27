@@ -25,5 +25,8 @@ export class ValidateUtil {
             .join(' ');
     }
 
-
+    static isNumeric(str: string): boolean {
+        const regex = /^[0-9]+$/;
+        return regex.test(str);
+    }
 }

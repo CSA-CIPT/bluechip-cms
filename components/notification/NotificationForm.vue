@@ -46,7 +46,7 @@
         </div>
         <div class="pb-3">
           <select v-model="notificationForm.type" class="select select-bordered w-full max-w-xs">
-            <option disabled selected>{{ notificationForm.selectedType }}</option>
+            <option disabled selected>{{ notificationForm.type }}</option>
             <option v-for="type in notificationType" :key="type" :value="type">{{ type }}</option>
           </select>
         </div>
@@ -259,7 +259,6 @@ const close = () =>{
 
 watchEffect(() => {
   if (props.notification) {
-    console.log('change', props.notification);
     notificationForm.value = { ...props.notification };
 
   }
