@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   ssr: false,
   devServer: {
-    host: "192.168.70.65", // Listen on all interfaces
+    host: "192.168.70.91", // Listen on all interfaces
     port: 3000, // The port you want to use
   },
   postcss: {

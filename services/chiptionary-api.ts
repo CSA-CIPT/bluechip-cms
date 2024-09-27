@@ -29,6 +29,7 @@ export const chiptionaryAPI = () => {
     const deleteChiptionary = async (id: string) => {
         await axios().delete(url + `/${id}`);
     }
+
     return {
         getAllChiptionary,
         getChiptionary,
