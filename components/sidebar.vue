@@ -25,6 +25,15 @@
             <NuxtLink to="/articles" @click.native="closeSidebar">
                 <CommonButtonIcon title="Article" icon="material-symbols:article-outline" icon-size=25 />
             </NuxtLink>
+
+          <div class="mb-6">
+            <button @click="authStore.showLogoutConfirmation = true" class="flex items-center p-2 hover:bg-gray-200 rounded-lg">
+              <Icon name="tdesign:logout" class="mr-2 text-red-500" />
+              <span class="text-red-500">Logout</span>
+            </button>
+          </div>
+
+
         </div>
     </aside>
 </template>
@@ -33,6 +42,8 @@
 import { ref } from 'vue';
 
 const isSidebarVisible = ref(false);
+const authStore = useAuthStore();
+const router = useRouter();
 
 const toggleSidebar = () => {
     isSidebarVisible.value = !isSidebarVisible.value;

@@ -26,11 +26,11 @@
                     <td>{{ notification.status }}</td>
                     <td>{{ notification.type }}</td>
                     <td> 
-                        <div class="flex gap-3">
-                            <button @click="sendAppNotification(notification)" class="btn bg-green-500 text-white">SEND</button>
-                            <button @click="navigateToEdit(notification)" class="btn bg-blue-500 text-white">EDIT</button>
-                            <button @click="confirmDelete(notification)" class="btn bg-red-500 text-white">DELETE</button>
-                        </div>
+                      <div class="flex gap-3">
+                          <button @click="sendAppNotification(notification)" class="btn bg-green-500 text-white">SEND</button>
+                          <button @click="navigateToEdit(notification)" class="btn bg-blue-500 text-white">EDIT</button>
+                          <button @click="confirmDelete(notification)" class="btn bg-red-500 text-white">DELETE</button>
+                      </div>
                     </td>
                 </tr>
             </tbody>

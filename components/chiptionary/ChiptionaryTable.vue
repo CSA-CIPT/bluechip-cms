@@ -14,6 +14,7 @@
       <tr>
         <th>Word</th>
         <th>Description</th>
+        <th>Actions</th>
       </tr>
       </thead>
       <tbody>
