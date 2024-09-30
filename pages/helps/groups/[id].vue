@@ -6,6 +6,7 @@ const groupHelpStore = useHelpStore();
 const router = useRouter();
 const route = useRoute();
 const groupHelp = ref<QuestionAnswer | null>(null);
+
 const id = route.params.id;
 const idNewEnd = route.query.helpGroupEditNew
 const idEditEnd =  route.query.helpEdit
@@ -13,8 +14,14 @@ const idEditEnd =  route.query.helpEdit
 const saveGroupHelp = async (groupHelp: QuestionAnswer) => {
   console.log('TEST', idNewEnd);
   await groupHelpStore.saveGroup(groupHelp, idNewEnd);
-  await router.replace(`/helps/${idNewEnd}`);
-}
+  if (idNewEnd){
+    await router.replace(`/helps/${idNewEnd}`);
+  }else if (idEditEnd){
+    await router.replace(`/helps/${idEditEnd}`);
+  }else {
+    console.error('id is undefined');
+  }
+};
 
 const closeGroupHelp = async () => {
   console.log('idEditEnd is undefined', idEditEnd);
@@ -26,7 +33,7 @@ const closeGroupHelp = async () => {
 
     await router.replace(`/helps/${idNewEnd}`);
   }else{
-    console.error('id is undefined');
+
   }
 };
 
