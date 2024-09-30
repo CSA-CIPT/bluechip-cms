@@ -87,7 +87,6 @@ const close = () =>{
 watchEffect(() => {
 
   if (props.chiptionary) {
-    console.log('change', props.chiptionary);
     chiptionaryForm.value = { ...props.chiptionary };
 
   }
@@ -96,7 +95,6 @@ watchEffect(() => {
 onMounted(() => {
 
   if (props.chiptionary) {
-    console.log('init', props.chiptionary);
     chiptionaryForm.value = { ...props.chiptionary };
   }
 });

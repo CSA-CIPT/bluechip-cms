@@ -21,6 +21,5 @@ const saveChiptionary = async (chiptionary: Chiptionary) =>{
 onMounted( async () => {
   const id = route.params.id;
   chiptionary.value = await chiptionaryStore.getById(id);
-  console.log('get', chiptionary.value);
 })
 </script>
