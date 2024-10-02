@@ -73,7 +73,6 @@
 
       <div v-if="!isNew" class="md:col-span-2 lg:col-span-5">
         <ImageUpload name="Main image" :image-url="articleForm.mainImage" @on-click-upload="onClickUploadMainImage"/>
-
         <ImageMultiUpload  :images="articleForm.images" title="Content images" @imageChanged="onContentImageChanged" @imageDeleted="onImageDeleted" @imageUpload="onImageUpload"/>
       </div>
     </div>
@@ -208,8 +207,6 @@ const save = async () => {
     await router.replace('/articles');
   }
 
-
-
 }
 
 const close = ()=> {
@@ -223,6 +220,7 @@ const onImageDeleted = async (name: string) =>{
 const onImageUpload = async (file: File) =>{
   await articleStore.uploadContentImage(articleForm.value, file);
 }
+
 watchEffect(() => {
   if (props.article) {
     articleForm.value = {...props.article};

@@ -4,20 +4,18 @@
     <button @click="addFile" class="btn btn-sm">Add</button>
   </div>
 
-  <div class="grid grid-rows-5 grid-flow-col gap-4">
-    <div v-for="(data, index) in imagesData" :key="index">
-      <div class="flex">
-        <ImageUpload
-            class="mr-5"
-            :image-url="data.url"
-            @onClickUpload="onImageUpload"
-            :name="`Content image ${index + 1}`"
-        />
-        <div class="flex items-end max-w-xs">
-          <button @click="removeFile(data.name, index)" class="btn btn-square bg-red-500 text-white">
-            <Icon name="iwwa:delete" />
-          </button>
-        </div>
+  <div class="grid grid-cols-1 gap-4">
+    <div v-for="(data, index) in imagesData" :key="index" class="flex items-start">
+      <ImageUpload
+          class="mr-5"
+          :image-url="data.url"
+          @onClickUpload="onImageUpload"
+          :name="`Content image ${index + 1}`"
+      />
+      <div class="flex items-center justify-center">
+        <button @click="removeFile(data.name, index)" class="btn btn-square bg-red-500 text-white">
+          <Icon name="iwwa:delete" />
+        </button>
       </div>
     </div>
   </div>

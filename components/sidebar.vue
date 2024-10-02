@@ -40,8 +40,10 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import {useNavbarStore} from "~/stores/navbar-store";
 
 const isSidebarVisible = ref(false);
+const navbarStore = useNavbarStore();
 const authStore = useAuthStore();
 const router = useRouter();
 

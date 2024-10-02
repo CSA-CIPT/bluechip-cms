@@ -9,7 +9,7 @@ export const useErrorStore = defineStore('errorStore', () => {
     function setError(errorMesage: string, code: number) {
         message.value = errorMesage;
         statusCode.value = code;
-        console.log('set error');
+        console.log('set error', statusCode.value);
     }
 
     function clearError() {

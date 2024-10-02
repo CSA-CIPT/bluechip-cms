@@ -40,8 +40,19 @@ const onImageError = () => {
 };
 
 const upload = async () => {
-  if(file.value != null){
+  if (file.value != null) {
+    // Emit the file to the parent or make the upload API call here
     emit('onClickUpload', file.value);
+
+    // Simulate an upload process and set the new image URL after uploading
+    // Assuming the backend returns the URL of the uploaded image, replace this with your logic
+    const newImageUrl = URL.createObjectURL(file.value); // You can replace this with the URL from your server
+
+    // Update the preview immediately with the new image URL
+    currentImageUrl.value = newImageUrl;
+
+    // Optionally reset the file input if you want to clear it after the upload
+    file.value = null;
   }
 }
 
@@ -49,28 +60,34 @@ const upload = async () => {
 
 <template>
   <div class="form-control w-full max-w-md border-2 rounded-md border-gray-200 p-4">
-    <!-- Left side: Image preview -->
+    <!-- Image preview (Left side) -->
     <div class="flex space-x-4">
-      <div v-if="currentImageUrl" class="w-1/3">
-        <img :src="currentImageUrl" alt="Preview" class="w-full h-auto rounded-lg object-cover" @error="onImageError" />
-      </div>
-      <div v-else class="w-1/3 flex items-center justify-center bg-gray-100 rounded-lg" style="height: 200px;">
-        <span class="text-gray-500">No Image</span>
+      <div class="w-1/2 flex items-center justify-center bg-gray-100 rounded-lg overflow-hidden" style="height: 200px;">
+        <img
+            v-if="currentImageUrl"
+            :src="currentImageUrl"
+            alt="Preview"
+            class="max-w-full max-h-full rounded-lg object-contain"
+            @error="onImageError"
+        />
+        <span v-else class="text-gray-500">No Image</span>
       </div>
 
-      <!-- Right side: File upload and name -->
-      <div class="w-2/3 flex justify-end items-end">
-        <label class="block w-full">
-          <span class="block text-sm font-medium text-gray-700">{{ props.name }}</span>
-          <input
-              ref="file"
-              @change="fileSelected"
-              accept="image/*"
-              type="file"
-              class="file-input file-input-bordered w-full max-w-xs"
-          />
-        </label>
-        <button @click="upload"  class="btn ml-3">Upload</button>
+      <!-- File upload and name (Right side) -->
+      <div class="w-1/2 flex flex-col justify-between relative">
+        <div>
+          <span class="block text-sm font-medium text-gray-700 mb-1">{{ props.name }}</span>
+          <label class="block w-full">
+            <input
+                ref="file"
+                @change="fileSelected"
+                accept="image/*"
+                type="file"
+                class="file-input file-input-bordered w-full"
+            />
+          </label>
+        </div>
+        <button @click="upload" class="btn absolute bottom-0 right-0">Upload</button>
       </div>
     </div>
   </div>

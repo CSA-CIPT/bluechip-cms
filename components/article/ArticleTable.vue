@@ -25,12 +25,27 @@
         <td>
           <div class="flex gap-3">
             <button @click="navigateToEdit(article)" class="btn bg-blue-500 text-white">EDIT</button>
+<!--            <button class="btn" @click="navigateToManageImage">MANAGE IMAGE</button>-->
             <button @click="confirmDelete(article)" class="btn bg-red-500 text-white">DELETE</button>
           </div>
         </td>
       </tr>
       </tbody>
     </table>
+
+<!--    <dialog id="manage_modal" class="modal">-->
+<!--      <div class="modal-box max-w-5xl">-->
+<!--        <h3 class="text-lg font-bold">Manage Image</h3>-->
+<!--        <p class=""></p>-->
+<!--        <div class="modal-action w-full">-->
+<!--          <form method="dialog" class="w-full">-->
+<!--            &lt;!&ndash; if there is a button, it will close the modal &ndash;&gt;-->
+<!--            <ManageImage :is-new="false"/>-->
+<!--            <button class="btn">Close</button>-->
+<!--          </form>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </dialog>-->
 
     <dialog id="delete_modal" class="modal">
       <div class="modal-box">
@@ -51,6 +66,8 @@
 import {useArticleStore} from "~/stores/article-store";
 import type {Article} from "~/model/article";
 import {ValidateUtil} from "~/util/validate-util";
+import {QuestionAnswer} from "~/model/question/question";
+
 
 const searchQuery = ref<string>('');
 const articleStore = useArticleStore();
@@ -70,6 +87,10 @@ const filteredArticle: Article[] = computed(() => {
 const navigateToEdit = (article: Article) => {
   router.push(`articles/${article.id}`);
 }
+
+const navigateToManageImage = (): void => {
+  manage_modal.showModal();
+};
 
 const confirmDelete = (article: Article): void => {
   selectedDeleteArticle.value = {...article};

@@ -9,7 +9,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     const authStore = useAuthStore();
 
     const axiosInstance = axios.create({
-        baseURL: process.env.API_BASE_URL || 'http://192.168.150.127:7700/api',
+        baseURL: process.env.API_BASE_URL || 'http://192.168.150.162:8181/api',
         headers: {
             'Content-Type': 'application/json',
         },

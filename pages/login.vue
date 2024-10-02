@@ -54,7 +54,7 @@
           <span class="label-text-alt text-red-500">{{formError.password}}</span>
         </div>
 
-<!--        <p v-if="error" class="text-red-600">{{ errorMessage }}</p>-->
+        <p v-if="error" class="text-red-500 label-text-alt">{{ errorMessage }}</p>
 
         <button
             @click="submit"
@@ -135,16 +135,18 @@ const submit = async () => {
 
   if (ValidateUtil.areFieldsEmpty(formError.value)) {
 
-    await authStore.loginUser(loginForm.value.username, loginForm.value.password);
-    console.log(errorStore.statusCode);
-    if(authStore.isLoginValid){
-      await router.push('/notifications')
-    }
-
-    if(errorStore.statusCode === 401){
-      console.log('not valid {}', errorStore.statusCode);
-      errorMessage.value = 'Incorrect username or password';
-      error.value = true;
+    try {
+      await authStore.loginUser(loginForm.value.username, loginForm.value.password);
+      console.log('validate', errorStore.statusCode);
+      if(authStore.isLoginValid){
+        await router.push('/notifications')
+      }
+    }catch (e){
+      if(errorStore.statusCode == 401){
+        console.log('not valid {}', errorStore.statusCode);
+        errorMessage.value = 'Incorrect username or password';
+        error.value = true;
+      }
     }
   }
 };
